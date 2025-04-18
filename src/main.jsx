@@ -4,6 +4,6 @@ import WingChatIntroApp from "./WingChatIntroApp";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <WingCreatorApp />
+    <WingChatIntroApp /> {/* ✅ Sửa đúng tên component */}
   </React.StrictMode>
 );
