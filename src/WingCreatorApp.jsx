@@ -21,8 +21,13 @@ export default function WingCreatorApp() {
   ];
 
   const generateScript = (idea) => {
-    const base = `Bối cảnh: Shop Wing Mobile – Khách bước vào\n\n3s đầu: "Anh ơi, con này chụp rõ mụn quá, em trả lại được không?"\nGiữa video: Nhân viên bất ngờ, hỏi lại: "Em dùng để làm gì?"\nKhách: "Em đi hẹn crush nên cần chụp ảo chút..."\nTwist cuối: Nhân viên: "Vậy em mua Samsung cho da mịn nhé!"\n\nHashtag: #WingMobile #DienThoaiCuDep #TikTokHieuQua\`;
-    setScript(\`🎬 Ý tưởng: \${idea}\n\n\${base}\`);
+    const base = `Bối cảnh: Shop Wing Mobile – Khách bước vào
+
+3s đầu: "Anh ơi, con này chụp rõ mụn quá, em trả lại được không?"
+Giữa video: Nhân viên bất ngờ, hỏi lại: "Em dùng để làm gì?"
+Twist cuối: Nhân viên: "Vậy em mua Samsung cho da mịn nhé!"`;
+
+    setScript(`🎬 Ý tưởng: ${idea}\n\n${base}`);
     setStep(4);
   };
 
@@ -46,10 +51,17 @@ export default function WingCreatorApp() {
           <CardContent className="space-y-4 p-6">
             <h2 className="text-xl font-semibold">2️⃣ Chọn ý tưởng</h2>
             {ideas.map((idea, idx) => (
-              <Button key={idx} variant="outline" className="w-full justify-start" onClick={() => {
-                setSelectedIdea(idea);
-                generateScript(idea);
-              }}>{idea}</Button>
+              <Button
+                key={idx}
+                variant="outline"
+                className="w-full justify-start"
+                onClick={() => {
+                  setSelectedIdea(idea);
+                  generateScript(idea);
+                }}
+              >
+                {idea}
+              </Button>
             ))}
             <Button variant="ghost" onClick={() => setStep(1)}>⬅️ Quay lại</Button>
           </CardContent>
