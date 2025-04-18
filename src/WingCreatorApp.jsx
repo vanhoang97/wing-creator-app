@@ -1,34 +1,30 @@
+// File: src/WingCreatorApp.jsx
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "./components/ui/card";
+import { Button } from "./components/ui/button";
+import { Input } from "./components/ui/input";
+import { Textarea } from "./components/ui/textarea";
 
 export default function WingCreatorApp() {
   const [step, setStep] = useState(1);
   const [brand, setBrand] = useState("");
-  const [style, setStyle] = useState("");
+  const [style, setStyle] = useState("Hài hước");
   const [product, setProduct] = useState("");
   const [audience, setAudience] = useState("");
-  const [ideas, setIdeas] = useState([]);
   const [selectedIdea, setSelectedIdea] = useState("");
   const [script, setScript] = useState("");
-
-  const styles = ["hài hước", "twist bất ngờ", "drama", "bán hàng", "thực tế"];
+  const [ideas, setIdeas] = useState([]);
 
   const generateIdeas = () => {
-    const ideasList = [];
-    for (let i = 1; i <= 30; i++) {
-      ideasList.push(
-        `${i}. [${style.toUpperCase()}] ${audience} đến ${brand} hỏi mua ${product}, và cái kết không ai ngờ`
-      );
-    }
-    setIdeas(ideasList);
+    const newIdeas = Array.from({ length: 30 }, (_, i) =>
+      `${i + 1}. ${brand} ra mắt ${product} theo phong cách ${style}`
+    );
+    setIdeas(newIdeas);
     setStep(2);
   };
 
   const generateScript = (idea) => {
-    const base = `Bối cảnh: Shop ${brand} – Khách bước vào\n\n3s đầu: Khách hỏi về ${product}\nGiữa video: Nhân viên hỏi: "Bạn định dùng để làm gì?"\nTwist cuối: Nhân viên đề xuất bất ngờ phù hợp với ${audience}.`;
+    const base = `Bối cảnh: ${brand} – Khách bước vào\n\n3s đầu: \"Anh ơi, ${product} này có gì hay?\"\nGiữa video: Nhân viên tư vấn phong cách ${style}.\nTwist cuối: Khách chốt đơn vì quá hợp với ${audience}!`;
     setScript(`🎬 Ý tưởng: ${idea}\n\n${base}`);
     setStep(4);
   };
@@ -40,15 +36,12 @@ export default function WingCreatorApp() {
           <CardContent className="space-y-4 p-6">
             <h2 className="text-xl font-semibold">1️⃣ Giới thiệu về bạn</h2>
             <Input placeholder="Tên thương hiệu (VD: Wing Mobile)" value={brand} onChange={(e) => setBrand(e.target.value)} />
-            <select
-              className="border rounded px-3 py-2 w-full"
-              value={style}
-              onChange={(e) => setStyle(e.target.value)}
-            >
-              <option value="">Chọn phong cách nội dung</option>
-              {styles.map((s, i) => (
-                <option key={i} value={s}>{s}</option>
-              ))}
+            <select className="w-full border p-2 rounded" value={style} onChange={(e) => setStyle(e.target.value)}>
+              <option>Hài hước</option>
+              <option>Cảm động</option>
+              <option>Chuyên gia tư vấn</option>
+              <option>Drama gây sốc</option>
+              <option>Chốt sale gắt</option>
             </select>
             <Input placeholder="Sản phẩm chính (VD: iPhone cũ, phụ kiện)" value={product} onChange={(e) => setProduct(e.target.value)} />
             <Input placeholder="Khách hàng mục tiêu (VD: học sinh, mẹ bỉm)" value={audience} onChange={(e) => setAudience(e.target.value)} />
