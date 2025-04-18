@@ -21,7 +21,7 @@ export default function WingCreatorApp() {
   ];
 
   const generateScript = (idea) => {
-    const base = \`Bối cảnh: Shop Wing Mobile – Khách bước vào\n\n3s đầu: "Anh ơi, con này chụp rõ mụn quá, em trả lại được không?"\nGiữa video: Nhân viên bất ngờ, hỏi lại: "Em dùng để làm gì?"\nKhách: "Em đi hẹn crush nên cần chụp ảo chút..."\nTwist cuối: Nhân viên: "Vậy em mua Samsung cho da mịn nhé!"\n\nHashtag: #WingMobile #DienThoaiCuDep #TikTokHieuQua\`;
+    const base = `Bối cảnh: Shop Wing Mobile – Khách bước vào\n\n3s đầu: "Anh ơi, con này chụp rõ mụn quá, em trả lại được không?"\nGiữa video: Nhân viên bất ngờ, hỏi lại: "Em dùng để làm gì?"\nKhách: "Em đi hẹn crush nên cần chụp ảo chút..."\nTwist cuối: Nhân viên: "Vậy em mua Samsung cho da mịn nhé!"\n\nHashtag: #WingMobile #DienThoaiCuDep #TikTokHieuQua\`;
     setScript(\`🎬 Ý tưởng: \${idea}\n\n\${base}\`);
     setStep(4);
   };
